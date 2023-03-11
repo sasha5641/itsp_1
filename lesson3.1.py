@@ -16,13 +16,16 @@ class Human:
         self.money = 100
 
     def get_home(self):
-        pass
+        self.home = House()
 
     def get_car(self):
-        pass
+        self.car = Auto(brands_of_car)
 
     def get_job(self):
-        pass
+        if not self.car.drive():
+            self.to_repair()
+            return
+        self.job = Job(jobs)
 
     def eat(self):
         pass
@@ -59,6 +62,47 @@ class Auto:
         self.strength = brand_dict[self.brand]['strength']
         self.consumption = brand_dict[self.brand]['consumption']
 
+    def drive(self):
+        if self.strength > 0 and self.fuel >= self.consumption:
+            self.fuel -= self.consumption
+            self.strength -= 1
+            return True #Авто поїхало
+        else:
+            print('Car cannot move!!!')
+            return False #Авто не поїхало
+
+
+class House:
+    def __init__(self):
+        self.food = 0
+        self.mess = 0
+
+
+class Job:
+    def __init__(self, job_dict):
+        self.job = random.choice(list(job_dict))
+        self.salary = job_dict[self.job]['salary']
+        self.gladness_less = job_dict[self.job]['gladness_less']
+
+
+jobs = {
+    'Waiter':{
+        'salary': 25,
+        'gladness_less': 13
+    },
+    'Python developer': {
+        'salary': 50,
+        'gladness_less': 7
+    },
+    'C++ developer': {
+        'salary': 60,
+        'gladness_less': 10
+    },
+    'Cleaner': {
+        'salary': 10,
+        'gladness_less': 20
+    },
+}
 
 brands_of_car = {
     'BMW': {
