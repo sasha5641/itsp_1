@@ -54,7 +54,9 @@ class Human:
 class Auto:
     def __init__(self, brand_dict):
         self.brand = random.choice(list(brand_dict))
-
+        self.fuel = brand_dict[self.brand]['fuel']
+        self.strength = brand_dict[self.brand]['strength']
+        self.consumption = brand_dict[self.brand]['consumption']
 
 
 brands_of_car = {
