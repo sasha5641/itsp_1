@@ -12,6 +12,6 @@ def checker(function, *args, **kwargs):
 def calculate(expression):
     return eval(expression)
 
-
+#yield   робить генератор
 calculate('2+2')
 
