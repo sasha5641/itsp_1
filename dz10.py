@@ -20,3 +20,19 @@ cur.execute(f'INSERT INTO weather (date, time) VALUES ("{date_now}", "{res}")')
 
 connection.commit()
 connection.close()
+
+
+
+import requests
+from bs4 import BeautifulSoup
+
+reponse = requests.get('https://bank.gov.ua/ua/markets/exchangerates')
+reponse_text = reponse.text
+
+soup = BeautifulSoup(reponse_text, features='html.parser')
+soup_l = soup.find_all('/td', {'class': 'value-name'})
+res = soup_l[7].text
+
+soup_list = soup.find_all('/td', {'data-label': 'Офіційний курс'})
+res = soup_l[7].text
+print(res)
