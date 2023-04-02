@@ -1,5 +1,5 @@
 import requests
-from bs4 import BeautifulSoup
+
 
 reponse = requests.get('https://coinmarketcap.com/')
 reponse_text = reponse.text
